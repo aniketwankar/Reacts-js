@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ToDo List</title>
+</head>
+<body>
+	<h2>Todo List</h2>
+	<p>
+		<input type="text" id="task">
+		<button id="addTask" onclick="add_task()">Add Task</button>
+	</p>
+	<ul id="op">
+		
+	</ul>
+	<h3 id="h2_comp"></h3>
+	<ul id="comp">
+
+	</ul>
+    <script src="jquery.js"></script>
+	<script type="text/javascript">
+		
+		task = document.getElementById('task');
+		op = document.getElementById('op');
+		comp = document.getElementById('comp');
+		h2_comp = document.getElementById('h2_comp');
+		
+        newButton = '<button id="comp" onclick="completed()">Completed</button>';
+
+		taskList = {'pending':[], 'completed':[]};  //object contains array
+
+		function add_task() {
+            if(task.value!='' && task.value!=null){
+                res="";
+			    taskList.pending.push(task.value);
+			    console.log(taskList);
+			    for(i=0; i<taskList.pending.length; i++){
+				    res = res + "<li id=li"+i+">"+taskList.pending[i]+"<button value='"+i+"' onclick=completed(this)>Completed</button>"+"</li>";
+                    $('#task').val('');
+			    }
+			op.innerHTML = res;
+            }
+		}
+
+        function completed(arg){
+            res1="";
+			comp_op="";
+            console.log(arg.value);
+            taskList.completed.push(taskList.pending[arg.value]);
+            taskList.pending.splice(arg.value,1);
+            for(i=0; i<taskList.pending.length; i++){
+				    res1 = res1 + "<li id=li"+i+">"+taskList.pending[i]+"<button value='"+i+"' onclick=completed(this)>Completed</button>"+"</li>";
+                    
+			    }
+			for (i=0; i<taskList.completed.length;i++){
+				comp_op=comp_op+"<li>"+taskList.completed[i]+"</li>";
+			}
+                op.innerHTML='';
+                op.innerHTML = res1;
+				if(taskList.completed){
+					h2_comp.innerHTML = "Completed Items :";
+				}
+				comp.innerHTML = comp_op;			
+                console.log(taskList);
+        }
+		
+	</script>
+</body>
+</html>
