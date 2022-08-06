@@ -1,0 +1,139 @@
+
+
+name = "Harish";
+surname = "Chopkar";
+fullname = "My name is " + name + surname;
+
+console.log(fullname);
+
+
+
+
+//Backtick string
+console.log(`My name is ${name} ${surname}`);
+str = `hi 
+
+   user 
+
+   how are you!`;
+console.log(str);
+
+
+name = "Harish";
+surname = "Chopkar";
+fullname = "My name is " + name + surname;
+console.log(fullname);
+
+//Backtick string - Template Literal
+console.log(`My name is ${name} ${surname}`);
+str = `hi 
+
+   user 
+
+   how are you!`;
+console.log(str);
+
+
+//Math.pow() : replacement
+//2*2*2=8
+a = 2**3;
+console.log(a+"=a");
+
+
+// Destructuring : unpack values from array
+var [first, last, company] = ['Harish', 'Chopkar', 'Webgurukul'];
+console.log(first);
+console.log(last);
+console.log(company);
+
+// default values 
+console.log("=======================");
+details = ['Harish', 'Chopkar'];
+var [first="Ashwajit", last="kamble", company="Webakruti"] = details;
+console.log(first);
+console.log(last);
+console.log(company);
+
+var [first="Ashwajit", last="kamble", company="Webakruti"] =  [,'Harish'];
+
+
+// Destructuring : unpack values from array
+var {first, last} = {company:"Azlogics", last:"Chopkar", first:"Harish"};
+
+console.log(first);
+console.log(last);
+
+// Destructuring : unpack values from array
+//rest(...) operator
+var {last, ...details} = {
+                           company:"Azlogics", 
+                           last:"Chopkar", 
+                           first:"Harish"
+                        };
+
+console.log( last);
+console.log( details.company);
+console.log( details.first);
+
+
+// Array Destructuring
+details = ['Harish', 'Chopkar', 'Webakruti'];
+var [first, ...remaining] = details;
+
+console.log(first);  //variable
+console.log(remaining); //array
+
+===========================================
+// function with default argument
+function greet1(fname="user"){
+   console.log("Hi "+ fname);
+}
+
+greet1("harish");
+greet1();
+
+
+
+// function with default argument with destructing
+function greet({fname="user"}={}){
+   console.log(`Hi  ${fname}`);
+}
+
+greet({fname: "Harish"});
+greet();
+
+// Function Argument
+//{fname, lname} = {fname:"Harish", lname:"Chopkar"}
+// function with default argument with destructing
+function greet({fname, lname}){
+   console.log(`Hi  ${fname} ${lname}`);
+}
+
+//function call
+greet({lname:"Chopkar", fname:"Harish"});
+
+
+// Function Argument
+//{fname, lname} = {fname:"Harish", lname:"Chopkar"}
+// function with default argument with destructing
+function greet({fname, ...details}){
+   console.log(`Hi  ${fname}`);
+   console.log(details);
+}
+
+//function call
+greet({lname:"Chopkar", fname:"Harish", comapny:"Webakruti"});
+
+
+// Function Argument
+//Array -> object
+data = [
+   {lname:"Chopkar", fname:"Harish", comapny:"Webakruti"},
+   {lname:"Chaudhary", fname:"Rahul", comapny:"Webakruti"},
+   {lname:"Chopkar", fname:"Rohit", comapny:"Webakruti"},
+   {lname:"Gupta", fname:"Shilpa", comapny:"Webakruti"},
+];
+
+for({fname, lname} of data){
+   console.log(fname, lname)
+}
